@@ -5,6 +5,16 @@ import LinkTitle from '../components/link.component'
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
+  var datos = [{
+    answerd: "b",
+    image: "",
+    question: "a"
+  }, {
+    answerd: "s",
+    image: "",
+    question: "d"
+  }]
+
   return (
     <div className={styles.container}>
       <Head>
@@ -35,7 +45,7 @@ const Home: NextPage = () => {
         <div className={styles.verticalSpacer}></div>
 
         <div className={styles.faqContainer}>
-          <FaqList></FaqList>
+          <FaqList questions={datos}></FaqList>
         </div>
       </div>
     </div>
