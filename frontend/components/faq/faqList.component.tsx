@@ -12,7 +12,12 @@ const fetcher = (url: any) => fetch(url, {
 
 const FaqList: NextPage = () => {
   var {data, error} = useSWR(process.env.QUESTIONS_API, fetcher);
-  var questions: Question[] = data? data.data.map((_data: any) => _data.attributes) : []; // Render attributes
+
+  function dataMapper() {
+    return data.data.map((_data: any) => _data.attributes);
+  }
+
+  var questions: Question[] = data? dataMapper() : []; // Render attributes
 
   return (
     <div className={styles.expansionPannel}>

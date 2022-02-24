@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'
 import { NextPage } from 'next';
 import styles from '../../styles/components/faq/question.module.scss';
 
@@ -34,7 +35,7 @@ const Question: NextPage<props> = ({ question, answer }) => {
       </div>
       <div className={`${styles.answerContainer} ${openStatus ? styles.openAnswedContainer : ''}`}>
         <div className={styles.answer}>
-          <p>{answer}</p>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{answer}</ReactMarkdown>
         </div>
       </div>
     </div>
