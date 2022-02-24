@@ -1,3 +1,40 @@
-.container {
-  padding: 0 2rem;
+.header {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+}
+
+.firstHeader {
+  display: flex;
+  background-color: rgb(189, 113, 101);
+}
+
+.links {
+  padding: 10px 0;
+  display: flex;
+  margin-right: 28px;
+}
+
+.image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: -1;
+  background-attachment: scroll;
+  background-size: cover;
+  background-image: url("https://standfortrees.org/wp-content/uploads/2020/03/pfc-boy-web-scaled.jpg");
+  transform: translate3d(0px, 25px, 0px);
+}
+
+.contentContainer .verticalSpacer {
+  height: 100vh;
+}
+
+.faqContainer {
+  width: 100%;
+  background-color: white;
+  height: 400pc;
 }

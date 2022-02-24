@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
+import FaqList from '../components/faq/faqList.component';
 import LinkTitle from '../components/link.component'
 import styles from '../styles/Home.module.css';
 
@@ -12,10 +12,13 @@ const Home: NextPage = () => {
         <meta name="description" content="Coding challenge Meta Carbon" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="header">
-        <div className="">
-          <div className="icons"></div>
-          <div className="links">
+      <div className={styles.header}>
+        <div className={styles.firstHeader}>
+          <div className={styles.icons}>
+
+          </div>
+          <div className="spacer"></div>
+          <div className={styles.links}>
             <LinkTitle name="For Business" href=""></LinkTitle>
             <LinkTitle name="Donations" href=""></LinkTitle>
             <LinkTitle name="Footprint Calculator" href=""></LinkTitle>
@@ -27,12 +30,13 @@ const Home: NextPage = () => {
 
         </div>
       </div>
-      <div className="image">
+      <div className={styles.image}></div>
+      <div className={styles.contentContainer}>
+        <div className={styles.verticalSpacer}></div>
 
-      </div>
-
-      <div className="faq">
-
+        <div className={styles.faqContainer}>
+          <FaqList></FaqList>
+        </div>
       </div>
     </div>
   )

@@ -1,14 +1,15 @@
 .container {
   width: fit-content; // Set the with of the content of the container
-  height: 30px;
-  color: black;
+  height: auto;
+  color: snow;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  margin: 0px 10px;
 }
 
 .link {
-  font-size: 1.1rem;
+  font-size: .8rem;
 }
 
 .container .bar {
