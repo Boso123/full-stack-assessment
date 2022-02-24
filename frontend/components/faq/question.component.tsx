@@ -5,12 +5,12 @@ import styles from '../../styles/components/faq/question.module.scss';
 
 interface props {
   question: string,
-  answerd: string
+  answer: string
   key: number
 };
 
 
-const Question: NextPage<props> = ({ question, answerd }) => {
+const Question: NextPage<props> = ({ question, answer }) => {
   var [openStatus, setOpenStatus] = useState(false); //Tuple with the funtion to update the variable
 
   /**
@@ -32,9 +32,9 @@ const Question: NextPage<props> = ({ question, answerd }) => {
           }
         </div>
       </div>
-      <div className={`${styles.answerdContainer} ${openStatus ? styles.openAnswedContainer : ''}`}>
-        <div className={styles.answerd}>
-          <p>{answerd}</p>
+      <div className={`${styles.answerContainer} ${openStatus ? styles.openAnswedContainer : ''}`}>
+        <div className={styles.answer}>
+          <p>{answer}</p>
         </div>
       </div>
     </div>

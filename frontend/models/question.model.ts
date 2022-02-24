@@ -1,4 +1,4 @@
 export interface Question {
-  question: string,
-  answerd: string,
+  Question: string,
+  Answer: string,
 }
