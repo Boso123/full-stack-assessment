@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { NextPage } from 'next';
 import styles from '../../styles/components/faq/question.module.scss';
@@ -9,12 +9,20 @@ interface props {
   key: number
 };
 
-const openStatus = false;
 
-const question: NextPage<props> = ({ question, answerd }) => {
+const Question: NextPage<props> = ({ question, answerd }) => {
+  var [openStatus, setOpenStatus] = useState(false); //Tuple with the funtion to update the variable
+
+  /**
+   * Change the status of the statusElement
+   */
+  function changeStatus() {
+    setOpenStatus(!openStatus);
+  }
+
   return (
     <div className={styles.expansionContainer}>
-      <div className={styles.title}>
+      <div className={styles.title} onClick={changeStatus}>
         <h1>{question}</h1>
         <div className='spacer'></div>
         <div className={styles.button}>
@@ -24,7 +32,7 @@ const question: NextPage<props> = ({ question, answerd }) => {
           }
         </div>
       </div>
-      <div className={styles.answerdContainer}>
+      <div className={`${styles.answerdContainer} ${openStatus ? styles.openAnswedContainer : ''}`}>
         <div className={styles.answerd}>
           <p>{answerd}</p>
         </div>
@@ -33,4 +41,4 @@ const question: NextPage<props> = ({ question, answerd }) => {
   )
 }
 
-export default question;
+export default Question;

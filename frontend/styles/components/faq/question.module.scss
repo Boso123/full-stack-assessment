@@ -2,6 +2,20 @@
   display: flex;
   align-items: center;
   color: gray;
+  cursor: pointer;
+}
+
+.expansionContainer {
+  width: 600px;
+  border-bottom: solid 1px lightgray;
+}
+
+.expansionContainer:hover > .title {
+  color: rgb(132, 201, 185);
+}
+
+.expansionContainer:hover > .button {
+  border: solid 2px rgb(132, 201, 185);
 }
 
 .button {
@@ -10,19 +24,10 @@
   width: 34px;
   height: 34px;
   border-radius: 100%;
-  border: solid 2px gray;
+  border: solid 2px;
   line-height: 14px;
   font-size: 1.8rem;
-}
-
-.expansionContainer {
-  width: 600px;
-  border-bottom: solid 1px lightgray;
-  cursor: pointer;
-}
-
-.expansionContainer:hover > .title {
-  color: aquamarine;
+  user-select: none;
 }
 
 .answerdContainer {
@@ -30,5 +35,15 @@
   height: 0;
   visibility: hidden;
   opacity: 0;
-  transition-duration: .4s;
+  transition-duration: .2s;
+}
+
+.openAnswedContainer {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.answerd p {
+  font-size: 1.4rem;
 }

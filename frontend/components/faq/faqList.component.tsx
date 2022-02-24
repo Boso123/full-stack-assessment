@@ -4,7 +4,7 @@ import QuestionComponent from './question.component';
 import styles from '../../styles/components/faq/faqList.module.scss';
 import { Question } from '../../models/question.model';
 
-const faqList: NextPage = () => {
+const FaqList: NextPage = () => {
   var questions: Question[] = [{
     answerd: "a",
     question: "g"
@@ -25,4 +25,4 @@ const faqList: NextPage = () => {
   )
 }
 
-export default faqList;
+export default FaqList;
