@@ -1,27 +1,28 @@
 import React from 'react';
 import { NextPage } from 'next';
-import Question from './question.component';
+import QuestionComponent from './question.component';
 import styles from '../../styles/components/faq/faqList.module.scss';
+import { Question } from '../../models/question.model';
 
-type props = {
-  questions: Iquestion[];
-}
-
-const faqList: NextPage<props> = ({ questions }) => {
+const faqList: NextPage = () => {
+  var questions: Question[] = [{
+    answerd: "a",
+    question: "g"
+  }, {
+    answerd: "a",
+    question: "c"
+  }, {
+    answerd: "a",
+    question: "c"
+  }]
   return (
     <div className={styles.expansionPannel}>
       {
-        questions.map((question, i) => (<Question key={i} question={question.question}
-          image={question.image} answerd={question.answerd}></Question>))
+        questions.map((question, i) => (<QuestionComponent key={i} question={question.question}
+          answerd={question.answerd}></QuestionComponent>))
       }
     </div>
   )
-}
-
-interface Iquestion {
-  question: string,
-  answerd: string,
-  image: string
 }
 
 export default faqList;

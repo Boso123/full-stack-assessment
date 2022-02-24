@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from "../styles/components/LinkTitle.module.scss";
 import { NextPage } from 'next';
 
-type Props = {
+interface Props {
   name: string,
   href: string
 };
