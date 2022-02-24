@@ -1,0 +1,25 @@
+.container {
+  width: fit-content; // Set the with of the content of the container
+  height: auto;
+  color: snow;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 0px 10px;
+}
+
+.link {
+  font-size: .8rem;
+}
+
+.container .bar {
+  width: 0%;
+  visibility: hidden;
+  border: solid 1px #6ecbb8!important;
+  transition-duration: .6s;
+}
+
+.container:hover > .bar {
+  width: 100%;
+  visibility: visible;
+}
