@@ -5,9 +5,18 @@ import { Question } from '../../models/question.model';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
+const token_refresher = async () => {
+  let response = await fetch(`${process.env.AUTH}`, {
+    method: 'post',
+    body: JSON.stringify({identifier: "refresh@fresh.com", password: "refresh"})
+  });
+  let responseJson = await response.json();
+  return responseJson.jwt;
+}
+
 const fetcher = (url: any) => fetch(url, { // Fetcher for the SWR request
   headers: new Headers({
-    'Authorization': `Bearer ${process.env.TOKEN_STRAPI}` // Attach Strapi token store in environment
+    'Authorization': `Bearer ${token_refresher()}` // Attach Strapi token store in environment
   })
 }).then(response => response.json());
 
