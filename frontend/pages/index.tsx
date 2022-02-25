@@ -17,28 +17,31 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Nav />
-
       <div className={styles.image}></div>
-      <div className={styles.contentContainer}>
 
-        <div className={styles.verticalSpacer}></div>
+      <div className={styles.content}>
+        <Nav />
 
-        <div className={styles.faqContainer}>
-          <div className={styles.titleContainer}>
-            <div className={styles.titleStripe}></div>
-            {
-              locale == 'en'?
-              <div className={styles.title}>
-                <h2>Frequently Asked Questions</h2>
-              </div> : <div className={styles.title}>
-                <h2>Preguntas Frecuentes</h2>
-              </div> 
-            }
-          </div>
+        <div className={styles.contentContainer}>
 
-          <div className={styles.faqs}>
-            <FaqList />
+          <div className={styles.verticalSpacer}></div>
+
+          <div className={styles.faqContainer}>
+            <div className={styles.titleContainer}>
+              <div className={styles.titleStripe}></div>
+              {
+                locale == 'en' ?
+                  <div className={styles.title}>
+                    <h2>Frequently Asked Questions</h2>
+                  </div> : <div className={styles.title}>
+                    <h2>Preguntas Frecuentes</h2>
+                  </div>
+              }
+            </div>
+
+            <div className={styles.faqs}>
+              <FaqList />
+            </div>
           </div>
         </div>
       </div>
