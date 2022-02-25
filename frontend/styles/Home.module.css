@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   right: 0;
-  height: calc(100vh - 50px);
+  height: 100%;
   top: 0;
   z-index: -1;
   background-attachment: scroll;
@@ -49,5 +49,5 @@
   background-color: white;
   display: flex;
   justify-content: center;
-  padding-top: 40px;
+  padding: 85px 0;
 }
