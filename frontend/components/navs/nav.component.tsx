@@ -6,7 +6,7 @@ import LocaleSwitcher from '../localeSwitcher.component'
 
 const NavEn: NextPage = () => {
   const router = useRouter(); // Router injection to know the actual locale of the page
-  const { locale, locales, defaultLocale } = router; // Unpack router locale information
+  const { locale } = router; // Unpack router locale information
 
   // Definition of the text in different locations
   const enLinks = [{ text: "For Business", href: "google.com" },

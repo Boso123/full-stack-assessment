@@ -15,6 +15,7 @@ a {
   box-sizing: border-box;
 }
 
-.spacer {
+/*Global style to flex spacer  º---º*/
+.spacer { 
   flex: 1 1 auto
 }

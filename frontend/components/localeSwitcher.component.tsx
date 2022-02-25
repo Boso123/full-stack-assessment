@@ -5,13 +5,13 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 const LocaleSwitcher: NextPage = () => {
-  const router = useRouter()
-  const { locale } = router;
-  const { pathname, query, asPath } = router
+  const router = useRouter() // Router injection
+  const { locale, pathname, query, asPath } = router; // Unpack locale sinformation of the router
 
   return (
     <div className={styles.container}>
       {
+        //Select locale information to locale switch
         locale == 'en' ? <Link href={{pathname, query}} as={asPath} locale="es">
           <a className={styles.link}>Spanish</a>
         </Link> : <Link href={{pathname, query}} as={asPath} locale="en">

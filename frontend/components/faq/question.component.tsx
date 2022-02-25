@@ -35,6 +35,7 @@ const Question: NextPage<props> = ({ question, answer }) => {
       </div>
       <div className={`${styles.answerContainer} ${openStatus ? styles.openAnswedContainer : ''}`}>
         <div className={styles.answer}>
+          {/* Parse markdown ans show it in the element */}
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{answer}</ReactMarkdown>
         </div>
       </div>

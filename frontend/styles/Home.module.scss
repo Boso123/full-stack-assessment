@@ -1,13 +1,14 @@
 .image {
-  position: fixed;
+  position: fixed; // Gives the image position absolute from all the elements
   left: 0;
   right: 0;
-  height: 100%;
+  bottom: 0;
   top: 0;
-  z-index: -1;
-  background-attachment: scroll;
+  z-index: -1; // Send to the background the image.
+  overflow: hidden;  // Hide any overflow in the image container.
+  background-attachment: scroll; // Clip the image movement to the scroll.
   background-size: cover;
-  background-image: url("https://standfortrees.org/wp-content/uploads/2020/03/pfc-boy-web-scaled.jpg");
+  background-image: url("https://standfortrees.org/wp-content/uploads/2020/03/pfc-boy-web-scaled.jpg"); //Load image from standfortess server
   transform: translate3d(0px, 25px, 0px);
 }
 
@@ -16,10 +17,14 @@
   background-color: black;
   color: white;
   width: 500px;
-  height: 145px;
+  height: fit-content;
   text-align: center;
   padding: 30px;
   font-size: 1.5rem;
+
+  @media (max-width: 425px) { // Media query to phones
+    width: auto;
+  }
 }
 
 .title h2 {
@@ -50,4 +55,8 @@
   display: flex;
   justify-content: center;
   padding: 85px 0;
+
+  @media (max-width: 425px) { // Media query to phones
+    padding: 85px 0 300px 0;
+  }
 }
