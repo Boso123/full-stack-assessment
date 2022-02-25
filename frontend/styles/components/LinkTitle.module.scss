@@ -20,6 +20,7 @@
   transition-duration: .6s;
 }
 
+// Animation of the bar.
 .container:hover > .bar {
   width: 100%;
   visibility: visible;

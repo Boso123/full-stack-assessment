@@ -5,9 +5,9 @@ import { Question } from '../../models/question.model';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-const fetcher = (url: any) => fetch(url, {
+const fetcher = (url: any) => fetch(url, { // Fetcher for the SWR request
   headers: new Headers({
-    'Authorization': `Bearer ${process.env.TOKEN_STRAPI}`
+    'Authorization': `Bearer ${process.env.TOKEN_STRAPI}` // Attach Strapi token store in environment
   })
 }).then(response => response.json());
 
@@ -25,6 +25,7 @@ const FaqList: NextPage = () => {
   return (
     <div className={styles.expansionPannel}>
       {
+        // Map every question and showed in the question component
         questions.map((question, i) => (<QuestionComponent key={i} question={question.Question}
           answer={question.Answer}></QuestionComponent>))
       }

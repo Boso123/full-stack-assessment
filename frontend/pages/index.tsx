@@ -2,12 +2,12 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import FaqList from '../components/faq/faqList.component';
-import Nav from '../components/navs/nav.component.en'
-import styles from '../styles/Home.module.css';
+import Nav from '../components/navs/nav.component'
+import styles from '../styles/Home.module.scss';
 
 const Home: NextPage = () => {
   const router = useRouter(); // Router injection to know the actual locale of the page
-  const { locale, locales, defaultLocale } = router; // Unpack router locale information
+  const { locale } = router; // Unpack router locale information
 
   return (
     <div className={styles.container}>
