@@ -6,12 +6,16 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 
-const fetchCredential = (url: any) => fetch(url, {
+const fetcherCredential = (url: any) => fetch(url, {
+  method: 'POST',
+  headers: new Headers({
+    'Content-Type': 'application/json'
+  }),
   body: JSON.stringify({
     identifier: process.env.USER,
     password: process.env.PASSWORD
   })
-}).then(response => response.json()).then(result => result.jwt);
+}).then(response => response.json());
 
 const fetcher = (url: any, token: any) => fetch(url, { // Fetcher for the SWR request
   headers: new Headers({
@@ -21,15 +25,20 @@ const fetcher = (url: any, token: any) => fetch(url, { // Fetcher for the SWR re
 
 const FaqList: NextPage = () => {
   const router = useRouter(); // Router injection to know the actual locale of the page
-  const {locale} = router; // Unpack router locale information
-  var {data: token} = useSWR(`${process.env.AUTH}`, fetchCredential);
-  var {data: question, error} = useSWR([`${process.env.QUESTIONS_API}?locale=${locale}`, token], fetcher); // Fetch information from the API using long pulling
+  const { locale } = router; // Unpack router locale information
+  var question: any = undefined;
+  //var { data: token } = useSWR(`${process.env.STRAPI_AUTH}`, fetcherCredential);
+  //var { data: question, error } = useSWR(token ? [`${process.env.QUESTIONS_API}?locale=${locale}`, token.jwt] : `${process.env.QUESTIONS_API}?locale=${locale}`, fetcher); // Fetch information from the API using long pulling
 
-  function dataMapper() {
-    return question.data.map((_data: any) => _data.attributes);
+  function dataMapper() { // Map the attributes of the fetched data
+    try {
+      return question.data.map((_data: any) => _data.attributes);
+    } catch (err) {
+      return [];
+    }
   }
 
-  var questions: Question[] = question? dataMapper() : []; // Render attributes
+  var questions: Question[] = question ? dataMapper() : []; // Render attributes
 
   return (
     <div className={styles.expansionPannel}>
