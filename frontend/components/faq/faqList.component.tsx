@@ -6,29 +6,30 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 
-const fetchCredential = () => fetch(`${process.env.AUTH}`, {
+const fetchCredential = (url: any) => fetch(url, {
   body: JSON.stringify({
     identifier: process.env.USER,
     password: process.env.PASSWORD
   })
-}).then(response => response.json().then(_response => _response.jwt));
+}).then(response => response.json()).then(result => result.jwt);
 
-const fetcher = (url: any) => fetch(url, { // Fetcher for the SWR request
+const fetcher = (url: any, token: any) => fetch(url, { // Fetcher for the SWR request
   headers: new Headers({
-    'Authorization': `Bearer ${fetchCredential()}` // Attach Strapi token store in environment
+    'Authorization': `Bearer ${token}` // Attach Strapi token store in environment
   })
 }).then(response => response.json());
 
 const FaqList: NextPage = () => {
   const router = useRouter(); // Router injection to know the actual locale of the page
   const {locale} = router; // Unpack router locale information
-  var {data, error} = useSWR(`${process.env.QUESTIONS_API}?locale=${locale}`, fetcher); // Fetch information from the API using long pulling
+  var {data: token} = useSWR(`${process.env.AUTH}`, fetchCredential);
+  var {data: question, error} = useSWR([`${process.env.QUESTIONS_API}?locale=${locale}`, token], fetcher); // Fetch information from the API using long pulling
 
   function dataMapper() {
-    return data.data.map((_data: any) => _data.attributes);
+    return question.data.map((_data: any) => _data.attributes);
   }
 
-  var questions: Question[] = data? dataMapper() : []; // Render attributes
+  var questions: Question[] = question? dataMapper() : []; // Render attributes
 
   return (
     <div className={styles.expansionPannel}>
